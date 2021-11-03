@@ -13,21 +13,15 @@
             //-------------------------------------------------
             var m=$vm.module_list['__MODULE__'];
             //-------------------------------------------------
-            var name="Average scoring and reporting in 2021";
+            var name="Number of sleep study by year";
             var columns=`
                 Year|Year
-                Month|Month
-                Number of Study performed|Number of Study proformed
-                Number of Study scored|Number of Study scored
-                Number of Study reported|Number of Study reported
-                Average Days of Scoring|Average Days of Scoring
-                Average Days of Reporting (from scoring)|Average Days of Repoting (from scoring)
-                Average Days of Repoting (from study)|Average Days of Repoting (from stydy)
+                Number of Sleep Study|Number of Sleep Study
             `
             //-------------------------------------------------
             var records=[];
             $('#D__ID').on('load',function(){
-                $vm.request({cmd:'sql',folder:'cms-sql-query',filename:'average-scoring-and-reporting-in-2021.txt',encoding:'utf8'},function(res){
+                $vm.request({cmd:'sql',folder:'cms-sql-query',filename:'number-of-sleep-study-by-year.txt',encoding:'utf8'},function(res){
                     if(res.status=='np'){
                         alert("No permissions.");
                         return;

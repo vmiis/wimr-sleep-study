@@ -13,26 +13,21 @@
             //-------------------------------------------------
             var m=$vm.module_list['__MODULE__'];
             //-------------------------------------------------
-            var name="Average scoring and reporting in 2021";
+            var name="Sleep study report done but not sent (since 01/04/2021) ";
             var columns=`
-                Year|Year
-                Month|Month
-                Number of Study performed|Number of Study proformed
-                Number of Study scored|Number of Study scored
-                Number of Study reported|Number of Study reported
-                Average Days of Scoring|Average Days of Scoring
-                Average Days of Reporting (from scoring)|Average Days of Repoting (from scoring)
-                Average Days of Repoting (from study)|Average Days of Repoting (from stydy)
+                Date|Date
+                Patient|Patient
+                Reported|Reported|ON
             `
             //-------------------------------------------------
             var records=[];
             $('#D__ID').on('load',function(){
-                $vm.request({cmd:'sql',folder:'cms-sql-query',filename:'average-scoring-and-reporting-in-2021.txt',encoding:'utf8'},function(res){
+                $vm.request({cmd:'sql',folder:'cms-sql-query',filename:'sleep-study-done-but-not-sent.txt',encoding:'utf8'},function(res){
                     if(res.status=='np'){
                         alert("No permissions.");
                         return;
                     }
-                    records=$vm.grid_render_1("__ID", {
+                    records=$vm.grid_render_1("__ID",{
                         name:name,
                         columns:columns,
                         rows:res.result,
