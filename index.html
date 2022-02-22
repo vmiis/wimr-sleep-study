@@ -31,7 +31,7 @@
         <!----------------------------------------------->
         <script app code>
             //---------------------------------------------
-            $VmAPI={};$vm.ver=[0.03,0.01]; $vm['jquery-ui-min-js']=1;
+            $VmAPI={};$vm.ver=[0.05,0.01]; $vm['jquery-ui-min-js']=1;
             $vm.flexindex=new FlexSearch({  doc: {id: "id",field: ["title","contents"]}    });
             $vm.hosting_path=window.location.href.substring(0, window.location.href.split('?')[0].lastIndexOf('/'));
             //---------------------------------------------
@@ -171,13 +171,24 @@
             //---------------------------------------------
             $vm.install=function(){
                 //---------------------------------------------
+                var important=0;
+                var last=function(){
+                    important++;
+                    if(important==1){
+                        $vm.show_module($vm.first_module,$vm.first_module_input)
+                        $vm.ready();
+                    }
+                }
+                //---------------------------------------------
                 $vm.init();
-                $vm.load_component('header','header',{});
+                $vm.load_component('header','header',{},function(name,id){
+                    $vm.install_module('auth','',{},function(name,id){});
+                });
                 $vm.load_component('footer','footer',{});
-                $vm.install_module('auth','',{},function(name,id){});
+                //$vm.install_module('auth','',{},function(name,id){});
                 $vm.install_module('token','',{},function(name,id){});
                 $vm.install_module('query','',{},function(name,id){});
-                $vm.install_module('vmext','',{},function(name,id){});
+                $vm.install_module('vmext','',{},function(name,id){ last(); });
                 var install_one=function(m,t){
                     setTimeout(function (){ 
                         $.ajaxSetup({cache:true}); 
@@ -215,8 +226,8 @@
                 $vm.load_resource("https://sdk.amazonaws.com/js/aws-sdk-2.1.34.min.js",function(){})
                 $vm.load_resource("https://www.gstatic.com/charts/loader.js",function(){})
                 //------------------------------------
-                $vm.show_module($vm.first_module,{})
-                $vm.ready();
+                //$vm.show_module($vm.first_module,{})
+                //$vm.ready();
             }
             //---------------------------------------------
             $("body").addClass('body_background_default');
