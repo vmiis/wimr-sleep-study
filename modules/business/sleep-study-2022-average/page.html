@@ -17,7 +17,7 @@
             //-------------------------------------------------
             var m=$vm.module_list['__MODULE__'];
             //-------------------------------------------------
-            var name="Average scoring and reporting in 2021";
+            var name="Average scoring and reporting in 2022";
             var columns=`
                 Year|Year
                 Month|Month
@@ -31,7 +31,7 @@
             //-------------------------------------------------
             var records=[];
             $('#D__ID').on('load',function(){
-                $vm.request({cmd:'sql',folder:'cms-sql-query',filename:'average-scoring-and-reporting-in-2021.txt',encoding:'utf8'},function(res){
+                $vm.request({cmd:'sql',folder:'cms-sql-query',filename:'average-scoring-and-reporting-in-2022.txt',encoding:'utf8'},function(res){
                     if(res.status=='np'){
                         alert("No permissions.");
                         return;
