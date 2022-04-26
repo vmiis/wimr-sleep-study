@@ -3,7 +3,7 @@
             Start Date: <input id=d1__ID type=date style="width: 180px; display:inline-block;" class="form-control" ></input>
             End Date: <input id=d2__ID type=date style="width: 180px; display:inline-block;" class="form-control" ></input>
             <button id=query__ID type=button class="btn btn-secondary" title='Query' style='vertical-align: top;margin-right:30px'>Query</button>
-            (Maximum returned: 500)
+            (Maximum returned: 3000)
             <span style="margin-right:100px"> </span> 
             Total Number of records: <span id=total__ID></span>
             <button id=export__ID type=button class="btn btn-secondary" title='Export' style='vertical-align: top;margin-left:30px'>Export</button>
@@ -55,7 +55,7 @@
                     }
                     for(var i=0;i<res.result.length;i++){
                         res.result[i].DT1=new Date(res.result[i].DT1).toLocaleDateString();
-                        res.result[i].Data['Patient']=res.result[i].Data['Patient'].split(',')[0];
+                        if(res.result[i].Data['Patient']!=null) res.result[i].Data['Patient']=res.result[i].Data['Patient'].toString().split(',')[0];
                     }
                     records=$vm.grid_render_1("__ID", {
                         name:name,
