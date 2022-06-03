@@ -30,13 +30,14 @@
                 Fee|Data.Fee
                 Patient Source|Data.Patient_Source
                 Requester|Data.Referrer2
+                Cancelled|Data.Cancelled|ON
                 Arrival Status|Data.Arrival_Status
-                Reported|Data.Reported
+                Reported|Data.Reported|ON
                 Submit date|DateTime
                 Submitted by|Author
                 Reporting Physician|Data.Reporting_Physician
                 Reporting Date|Data.Reporting_Date
-                Sent report to referrer/s|Data.SentReport
+                Sent report to referrer/s|Data.SentReport|ON
             `
             //-------------------------------------------------
             var records=[];
@@ -64,6 +65,13 @@
                     })
                 })
             }
+            //-------------------------------------------------
+            /*
+            var cell_render=function(header,c){
+                if(header=="Date") return c.substr(0,10);
+                return c;
+            }
+            */
             //-------------------------------------------------
             $('#query__ID').on('click',function(){
                 query();
