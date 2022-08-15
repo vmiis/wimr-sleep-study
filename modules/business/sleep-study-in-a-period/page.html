@@ -57,6 +57,10 @@
                     for(var i=0;i<res.result.length;i++){
                         res.result[i].DT1=new Date(res.result[i].DT1).toLocaleDateString();
                         if(res.result[i].Data!=null && res.result[i].Data['Patient']!=null) res.result[i].Data['Patient']=res.result[i].Data['Patient'].toString().split(',')[0];
+                        if(res.result[i].DT1!=null){
+                            var a=res.result[i].DT1.split('/');
+                            res.result[i].DT1=a[1]+"/"+a[0]+"/"+a[2];
+                        }
                     }
                     records=$vm.grid_render_1("__ID", {
                         name:name,
